@@ -9,57 +9,57 @@
 // save index and prompts in the browser cache for refresh
 -->
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>BonoboConnect Admin</title>
-    <link href="admin.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="bc_favicon.png">
+    <link href="prompt.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="bc_favicon.png" />
   </head>
   <body class="text-center">
     <main class="form-prompts">
       <form onsubmit="return updatePrompts()" id="form-prompts">
         <h1 class="h3 mb-3 fw-normal">Current Prompts</h1>
         <div>
-          <label>Current:</label>
-          <input type="text" class="form-control" id="current-prompt">
+          <p type="text" class="current_prompt" id="current_prompt">&nbsp;</p>
         </div>
-      <p>
-
-
-        </p>
+        <p></p>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="prompts">
+          <input type="text" class="form-control" id="prompts" />
         </div>
-        <button class="btn btn-lg btn-primary mt-3" type="submit">Update Prompts</button>
+        <button class="btn btn-lg btn-primary mt-3" type="submit">
+          Update Prompts
+        </button>
       </form>
 
       <form onsubmit="return updateIndex()" id="form-index">
         <h1 class="h3 mb-3 fw-normal">Current Index</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="index">
+          <input type="text" class="form-control" id="index" />
         </div>
-          <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Update Index</button>
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
+          Update Index
+        </button>
       </form>
 
-      <p>
-
-
-        </p>
-
+      <p></p>
 
       <form onsubmit="return nextPrompt()">
-        <button  id="next-prompt" class="w-100 btn btn-lg btn-primary mt-3" type="submit">Next Prompt</button>
+        <button
+          id="next-prompt"
+          class="w-100 btn btn-lg btn-primary mt-3"
+          type="submit"
+        >
+          Next Prompt
+        </button>
       </form>
-
     </main>
-
     <script src="admin.js"></script>
   </body>
 </html>

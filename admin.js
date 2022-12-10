@@ -10,16 +10,16 @@
     let promptsForm = window.document.getElementById("prompts");
     promptsForm.value = currentPrompts();
 
-    let current = window.document.getElementById("current-prompt");
-    current.value = currentPrompt();
-
     let indexForm = window.document.getElementById("index");
     let index = localStorage.getItem("index");
-    if (index === null) {
+    if (index === null || index === "") {
         index = 0
         localStorage.setItem("index", index.toString());
     }
     indexForm.value = index.toString();
+
+    let current = window.document.getElementById("current_prompt");
+    current.innerText = currentPrompt();
 })();
 
 function currentPrompts() {
@@ -40,7 +40,7 @@ function currentPrompt() {
 
     let currentIndex = localStorage.getItem("index");
     let int = parseInt(currentIndex);
-    console.log("current prompt: "+prompts[int] );
+    console.log("current prompt: ["+int+"] "+prompts[int] );
     return prompts[int];
 }
 
