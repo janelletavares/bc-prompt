@@ -2,7 +2,7 @@
     "use strict";
    let input = window.document.getElementById("current_prompt");
     if (input !== null) {
-    input.value = currentPrompt();
+      input.innerText = currentPrompt();
     }
 })();
 
