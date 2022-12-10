@@ -4,3 +4,10 @@ body {
   background-color: #ca1f1f;
   color: #efefef;
 }
+
+.current_prompt {
+  border-width:3px;
+  border-style:solid;
+  border-color:#efefef;
+  padding: 1em;
+}
