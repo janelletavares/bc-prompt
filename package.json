@@ -1,3 +1,20 @@
 {
-  "type": "module"
+  "type": "module",
+  "name": "bc-prompt",
+  "version": "1.0.0",
+  "main": "prompt.js",
+  "scripts": {
+    "test": "node prompt.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janelletavares/bc-prompt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janelletavares/bc-prompt/issues"
+  },
+  "homepage": "https://github.com/janelletavares/bc-prompt#readme",
+  "description": ""
 }
