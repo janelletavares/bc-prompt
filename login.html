@@ -1,31 +1,42 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>BonoboConnect Admin</title>
-    <link href="login.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="bc_favicon.png">
+    <link href="login.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="bc_favicon.png" />
   </head>
   <body class="text-center">
     <main class="form-signin">
       <form onsubmit="return login()">
-        <img class="mb-4" src="./bc.png" alt="" height="300">
+        <img class="mb-4" src="./bc.png" alt="" height="150" />
         <h1 class="h3 mb-3 fw-normal"><b>BonoboConnect Admin</b> - Login</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="username" placeholder="Username">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Username"
+          />
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="password" placeholder="Password">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+          />
           <label for="floatingPassword">Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login</button>
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
+          Login
+        </button>
       </form>
     </main>
 
