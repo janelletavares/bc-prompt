@@ -21,7 +21,7 @@
     <link rel="icon" type="image/x-icon" href="bc_favicon.png" />
   </head>
   <body class="text-center">
-    <main class="form-prompts">
+    <main class="forms">
       <form onsubmit="return updatePrompts()" id="form-prompts">
         <h1 class="h3 mb-3 fw-normal">Current Prompts</h1>
         <div>
@@ -30,7 +30,7 @@
         <p></p>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="prompts" />
+          <input type="text" class="form-prompts" id="prompts"/>
         </div>
         <button class="btn btn-lg btn-primary mt-3" type="submit">
           Update Prompts
@@ -41,7 +41,7 @@
         <h1 class="h3 mb-3 fw-normal">Current Index</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="index" />
+          <input type="text" class="form-index" id="index"/>
         </div>
         <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
           Update Index
