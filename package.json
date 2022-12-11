@@ -2,9 +2,9 @@
   "type": "module",
   "name": "bc-prompt",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.cjs",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.cjs"
   },
   "repository": {
     "type": "git",
