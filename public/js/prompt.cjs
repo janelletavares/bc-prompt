@@ -6,7 +6,7 @@
 
 function currentPrompt() {
     let http = new XMLHttpRequest();
-    http.open("GET", "http://localhost:3000/prompt");
+    http.open("GET", "http://bonoboconnect.com/prompt");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send();
