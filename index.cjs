@@ -7,7 +7,7 @@ let bodyParser = require('body-parser')
 let jsonParser = bodyParser.json()
 
 const hostname = '127.0.0.1';
-const port = 80;
+const port = 3000;
 
 
 
@@ -88,28 +88,55 @@ app.post('/index',jsonParser, function(req,res){
 
 
 app.get('/authentication',function(req,res){
+  let ret = "unauthenticated"
   let val = store.get("authenticated")
   console.log("stored authenticated= "+val);
   if (val === null || val === "" || val === undefined) {
     console.log("defining")
-    val = false
+    ips = []
+  } else {
+    ips = JSON.parse(val)
   }
-  res.json(val)
+  let referer = req.header("referer")
+  let index = referer.lastIndexOf("/")// subtract last /
+  let origin = referer.slice(0, index)
+  for (let i = 0; i < ips.length; i++) {
+    if (ips[i] === origin) {
+      res.json("letsgo")
+      return
+    }
+  }
+  res.json(ret)
 });
 
 app.post('/authentication',jsonParser, function(req,res){
-  let val = "unauthenticated"
-  store.set("authenticated", val)
-  console.log("body: "+JSON.stringify(req.body))
+  let ret = "unauthenticated"
+  let val = store.get("authenticated")
+  let ips = []
+  if (val === null || val === "" || val === undefined) {
+    ips = []
+    store.set("authenticated", JSON.stringify(ips))
+  } else {
+    ips = JSON.parse(val)
+  }
+  let origin = req.header("origin")
+  for (let i = 0; i < ips.length; i++) {
+    if (ips[i] === origin) {
+      res.json("letsgo")
+      return
+    }
+  }
 
   let adminUsername = process.env.ADMIN_USERNAME
   let adminPassword = process.env.ADMIN_PASSWORD
   let success = req.body.username === adminUsername && req.body.password === adminPassword;
+
   if (success === true) {
-    val = "letsgo"
-    store.set("authenticated", val)
+    ret = "letsgo"
+    ips.push(origin)
+    store.set("authenticated", JSON.stringify(ips))
   }
-  res.json(val)
+  res.json(ret)
 });
 
 
