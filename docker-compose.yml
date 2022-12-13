@@ -26,16 +26,16 @@ services:
       - bc
     networks:
       - app-network
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
-    depends_on:
-      - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email tavaresjanelle@gmail.com --agree-tos --no-eff-email --staging -d bonoboconnect.com  -d www.bonoboconnect.com
+# certbot:
+#    image: certbot/certbot
+#    container_name: certbot
+#    volumes:
+#      - certbot-etc:/etc/letsencrypt
+#      - certbot-var:/var/lib/letsencrypt
+#      - web-root:/var/www/html
+#    depends_on:
+#      - webserver
+#    command: certonly --webroot --webroot-path=/var/www/html --email tavaresjanelle@gmail.com --agree-tos --no-eff-email --staging -d bonoboconnect.com  -d www.bonoboconnect.com
     #command: certonly --webroot --webroot-path=/var/www/html --email my@email.com --agree-tos --no-eff-email --force-renewal -d Nodejs.devopslee.com  -d www.Nodejs.devopslee.com
 volumes:
   certbot-etc:
