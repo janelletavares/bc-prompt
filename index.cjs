@@ -60,8 +60,10 @@ app.get('/prompt',function(req,res){
   let val = store.get("prompts")
   console.log("val: "+val)
   if (val !== null && val !== "" && val !== undefined) {
-    prompt = val[int]
+    let prompts = JSON.parse(val)
+    prompt = prompts[int]
   }
+  console.log("prompt: "+prompt)
   res.json(prompt)
 });
 
