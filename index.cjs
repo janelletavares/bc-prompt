@@ -29,13 +29,15 @@ app.get('/login',function(req,res){
 
 app.get('/prompts',function(req,res){
   console.log("GET /prompts")
+  let prompts = []
   let val = store.get("prompts")
   if (val === null || val === "" || val === undefined) {
-    val = []
-    store.set("prompts", val)
+    store.set("prompts", JSON.stringify(prompts))
+  } else {
+    prompts = JSON.parse(val)
   }
-  console.log("prompts= "+JSON.stringify(val))
-  res.json(val)
+  console.log("prompts= "+prompts)
+  res.json(prompts)
 });
 
 app.post('/prompts', jsonParser, function(req,res){
