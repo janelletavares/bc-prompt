@@ -44,7 +44,7 @@ app.post('/prompts', jsonParser, function(req,res){
   console.log("POST /prompts")
   console.log("prompts="+req.body)
   if (req.body !== "" && req.body !== null && req.body !== undefined) {
-    store.set("prompts", req.body)
+    store.set("prompts", JSON.stringify(req.body))
   }
   res.json(true)
 });
