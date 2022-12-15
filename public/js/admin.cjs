@@ -74,8 +74,6 @@ function getIndex() {
 
 function updateIndex() {
     console.log("current index: " + localStorage.getItem("index"));
-    let indexForm = window.document.getElementById("index");
-    parseInt(indexForm.value);
 
     var http = new XMLHttpRequest();
     http.open("POST", "http://bonoboconnectprompt.com/index");
@@ -84,8 +82,12 @@ function updateIndex() {
     http.send(JSON.stringify({index: indexForm.value}));
     http.onreadystatechange=(e)=> {
         success = http.responseText
+        console.log("response "+success)
         if (success !== "true") {
             console.log("that wasn't good")
+        } else {
+            let indexForm = window.document.getElementById("index");
+            parseInt(indexForm.value);
         }
     }
 }
