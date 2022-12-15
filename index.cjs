@@ -50,6 +50,7 @@ app.post('/prompts', jsonParser, function(req,res){
 });
 
 app.get('/prompt',function(req,res){
+  console.log(req.headers)
   console.log("GET /prompt")
   let index = store.get("index")
   let int = 0
@@ -118,6 +119,7 @@ app.get('/authentication',function(req,res){
 });
 
 app.post('/authentication',jsonParser, function(req,res){
+  console.log(req.headers)
   let ret = "unauthenticated"
   let val = store.get("authenticated")
   let ips = []
