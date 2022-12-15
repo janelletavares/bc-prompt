@@ -98,7 +98,7 @@ app.post('/index',jsonParser, function(req,res){
 app.get('/authentication',function(req,res){
   let ret = "unauthenticated"
   let val = store.get("authenticated")
-  console.log("stored authenticated= "+val);
+  console.log("fetched authenticated= "+val);
   if (val === null || val === "" || val === undefined) {
     console.log("defining")
     ips = []
@@ -107,12 +107,15 @@ app.get('/authentication',function(req,res){
     ips = JSON.parse(val)
   }
   let referer = req.header("x-forwarded-for")
-  let index = referer.lastIndexOf("/")// subtract last /
-  let origin = referer.slice(0, index)
-  for (let i = 0; i < ips.length; i++) {
-    if (ips[i] === origin) {
-      res.json("letsgo")
-      return
+  console.log("referer "+referer)
+  if (referer !== "" && referer !== null && referer !== undefined) {
+    let index = referer.lastIndexOf("/")// subtract last /
+    let origin = referer.slice(0, index)
+    for (let i = 0; i < ips.length; i++) {
+      if (ips[i] === origin) {
+        res.json("letsgo")
+        return
+      }
     }
   }
   res.json(ret)
@@ -131,6 +134,7 @@ app.post('/authentication',jsonParser, function(req,res){
   }
   let origin = req.header("x-forwarded-for")
   for (let i = 0; i < ips.length; i++) {
+    console.log("comparing "+ips[i]+" "+origin)
     if (ips[i] === origin) {
       res.json("letsgo")
       return
@@ -144,8 +148,10 @@ app.post('/authentication',jsonParser, function(req,res){
   if (success === true) {
     ret = "letsgo"
     ips.push(origin)
+    console.log("storing "+JSON.stringify(ips))
     store.set("authenticated", JSON.stringify(ips))
   }
+  console.log("ret "+ret)
   res.json(ret)
 });
 
