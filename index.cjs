@@ -106,7 +106,7 @@ app.get('/authentication',function(req,res){
   } else {
     ips = JSON.parse(val)
   }
-  let referer = req.header("referer")
+  let referer = req.header("x-forwarded-for")
   let index = referer.lastIndexOf("/")// subtract last /
   let origin = referer.slice(0, index)
   for (let i = 0; i < ips.length; i++) {
@@ -129,7 +129,7 @@ app.post('/authentication',jsonParser, function(req,res){
   } else {
     ips = JSON.parse(val)
   }
-  let origin = req.header("origin")
+  let origin = req.header("x-forwarded-for")
   for (let i = 0; i < ips.length; i++) {
     if (ips[i] === origin) {
       res.json("letsgo")
