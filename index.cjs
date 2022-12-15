@@ -63,7 +63,8 @@ app.get('/prompt',function(req,res){
   console.log("val: "+val)
   if (val !== null && val !== "" && val !== undefined) {
     let prompts = JSON.parse(val)
-    if (int < prompt.length) {
+   console.log("prompts: "+prompts)
+    if (int < prompts.length) {
       prompt = prompts[int]
     }
   }
