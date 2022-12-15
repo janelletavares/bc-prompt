@@ -73,7 +73,8 @@ function getIndex() {
 }
 
 function updateIndex() {
-    console.log("current index: " + localStorage.getItem("index"));
+    let indexForm = window.document.getElementById("index");
+    console.log("current index: " + indexForm.value);
 
     var http = new XMLHttpRequest();
     http.open("POST", "http://bonoboconnectprompt.com/index");
@@ -85,9 +86,6 @@ function updateIndex() {
         console.log("response "+success)
         if (success !== "true") {
             console.log("that wasn't good")
-        } else {
-            let indexForm = window.document.getElementById("index");
-            parseInt(indexForm.value);
         }
     }
 }
@@ -104,6 +102,7 @@ function nextPrompt() {
     http.send(JSON.stringify({index: int}));
     http.onreadystatechange=(e)=> {
         console.log("next prompt response: "+http.responseText)
+        sleep(2000)
         success = http.responseText
         if (success === "true") {
             indexForm.value = "";
