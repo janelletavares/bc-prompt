@@ -100,6 +100,7 @@ app.get('/authentication',function(req,res){
   if (val === null || val === "" || val === undefined) {
     console.log("defining")
     ips = []
+    store.set("authenticated", JSON.stringify(ips))
   } else {
     ips = JSON.parse(val)
   }

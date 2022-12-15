@@ -12,6 +12,7 @@ function currentPrompt() {
     http.send();
     http.onreadystatechange=(e)=>{
         let display = window.document.getElementById("current_prompt");
+        console.log("responseText= "+http.responseText)
         display.innerText = http.responseText.slice(1, -1)
     }
 }
