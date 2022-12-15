@@ -111,10 +111,10 @@ app.get('/authentication',function(req,res){
   let referer = req.header("x-forwarded-for")
   console.log("referer "+referer)
   if (referer !== "" && referer !== null && referer !== undefined) {
-    let index = referer.lastIndexOf("/")// subtract last /
-    let origin = referer.slice(0, index)
+    //let index = referer.lastIndexOf("/")// subtract last /
+    //let origin = referer.slice(0, index)
     for (let i = 0; i < ips.length; i++) {
-    console.log("comparing "+ips[i]+" "+origin)
+    console.log("comparing "+ips[i]+" "+referer)
       if (ips[i] === origin) {
         res.json("letsgo")
         return
