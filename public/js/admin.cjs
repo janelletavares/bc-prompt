@@ -1,6 +1,6 @@
 (function() {
     var http = new XMLHttpRequest();
-    http.open("GET", "http://34.213.130.157/authentication");
+    http.open("GET", "http://bonoboconnectprompt.com/authentication");
     http.send();
     http.onreadystatechange=(e)=>{
         console.log("checking for authentication..."+JSON.stringify(this.readyState))
@@ -21,7 +21,7 @@
 
 function currentPrompts() {
     var http = new XMLHttpRequest();
-    http.open("GET", "http://34.213.130.157/prompts");
+    http.open("GET", "http://bonoboconnectprompt.com/prompts");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send();
@@ -33,7 +33,7 @@ function currentPrompts() {
 
 function currentPrompt() {
     var http = new XMLHttpRequest();
-    http.open("GET", "http://34.213.130.157/prompt");
+    http.open("GET", "http://bonoboconnectprompt.com/prompt");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send();
@@ -49,7 +49,7 @@ function updatePrompts() {
     console.log("new prompts = "+value)
 
     var http = new XMLHttpRequest();
-    http.open("POST", "http://34.213.130.157/prompts");
+    http.open("POST", "http://bonoboconnectprompt.com/prompts");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send(value);
@@ -58,7 +58,7 @@ function updatePrompts() {
 function getIndex() {
     let int = 0
     var http = new XMLHttpRequest();
-    http.open("GET", "http://34.213.130.157/index");
+    http.open("GET", "http://bonoboconnectprompt.com/index");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send();
@@ -78,7 +78,7 @@ function updateIndex() {
     parseInt(indexForm.value);
 
     var http = new XMLHttpRequest();
-    http.open("POST", "http://34.213.130.157/index");
+    http.open("POST", "http://bonoboconnectprompt.com/index");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send(JSON.stringify({index: indexForm.value}));
@@ -96,7 +96,7 @@ function nextPrompt() {
     int = int + 1;
     console.log("new index: " + int);
     let http = new XMLHttpRequest();
-    http.open("POST", "http://34.213.130.157/index");
+    http.open("POST", "http://bonoboconnectprompt.com/index");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     http.send(JSON.stringify({index: int}));
