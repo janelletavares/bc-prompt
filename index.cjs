@@ -115,7 +115,7 @@ app.get('/authentication',function(req,res){
     //let origin = referer.slice(0, index)
     for (let i = 0; i < ips.length; i++) {
     console.log("comparing "+ips[i]+" "+referer)
-      if (ips[i] === origin) {
+      if (ips[i] === referer) {
         res.json("letsgo")
         return
       }
