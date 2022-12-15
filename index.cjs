@@ -96,6 +96,8 @@ app.post('/index',jsonParser, function(req,res){
 
 
 app.get('/authentication',function(req,res){
+  console.log("GET /authentication")
+  console.log(req.headers)
   let ret = "unauthenticated"
   let val = store.get("authenticated")
   console.log("fetched authenticated= "+val);
