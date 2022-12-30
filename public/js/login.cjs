@@ -4,7 +4,7 @@ function login() {
 
     let success = "false"
     var http = new XMLHttpRequest();
-    http.open("POST", "http://bonoboconnectprompt.com/authentication");
+    http.open("POST", "https://bonoboconnectprompt.com/authentication");
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("Content-Type", "application/json");
     let input = {username: username, password: password}
