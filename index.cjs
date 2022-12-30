@@ -36,13 +36,13 @@ app.get('/prompts',function(req,res){
   } else {
     prompts = JSON.parse(val)
   }
-  console.log("prompts= "+prompts)
+  //console.log("prompts= "+prompts)
   res.json(prompts)
 });
 
 app.post('/prompts', jsonParser, function(req,res){
   console.log("POST /prompts")
-  console.log("prompts="+req.body)
+  //console.log("prompts="+req.body)
   if (req.body !== "" && req.body !== null && req.body !== undefined) {
     store.set("prompts", JSON.stringify(req.body))
   }
@@ -50,26 +50,26 @@ app.post('/prompts', jsonParser, function(req,res){
 });
 
 app.get('/prompt',function(req,res){
-  console.log(req.headers)
+  //console.log(req.headers)
   console.log("GET /prompt")
   let index = store.get("index")
   let int = 0
   if (index !== null && index !== undefined) {
     int = parseInt(index)
   }
-  console.log("index; "+int)
+  //console.log("index; "+int)
 
   let prompt = ""
   let val = store.get("prompts")
-  console.log("val: "+val)
+  //console.log("val: "+val)
   if (val !== null && val !== "" && val !== undefined) {
     let prompts = JSON.parse(val)
-   console.log("prompts: "+prompts)
+   //console.log("prompts: "+prompts)
     if (int < prompts.length) {
       prompt = prompts[int]
     }
   }
-  console.log("prompt: "+prompt)
+  //console.log("prompt: "+prompt)
   res.json(prompt)
 });
 
@@ -81,40 +81,38 @@ app.get('/index',function(req,res){
     val = 0
     store.set("index", val)
   }
-  console.log("index= "+val)
+  //console.log("index= "+val)
   res.json(val)
 });
 
 app.post('/index',jsonParser, function(req,res){
   console.log("POST /index")
-  console.log("index= "+JSON.stringify(req.body))
+  //console.log("index= "+JSON.stringify(req.body))
   let int = parseInt(req.body.index)
   store.set("index", int)
-  console.log("index= "+int)
+  //console.log("index= "+int)
   res.json(true)
 });
 
 
 app.get('/authentication',function(req,res){
   console.log("GET /authentication")
-  console.log(req.headers)
+  //console.log(req.headers)
   let ret = "unauthenticated"
   let val = store.get("authenticated")
-  console.log("fetched authenticated= "+val);
+  //console.log("fetched authenticated= "+val);
   if (val === null || val === "" || val === undefined) {
-    console.log("defining")
+    //console.log("defining")
     ips = []
     store.set("authenticated", JSON.stringify(ips))
   } else {
     ips = JSON.parse(val)
   }
   let referer = req.header("x-forwarded-for")
-  console.log("referer "+referer)
+  //console.log("referer "+referer)
   if (referer !== "" && referer !== null && referer !== undefined) {
-    //let index = referer.lastIndexOf("/")// subtract last /
-    //let origin = referer.slice(0, index)
     for (let i = 0; i < ips.length; i++) {
-    console.log("comparing "+ips[i]+" "+referer)
+    //console.log("comparing "+ips[i]+" "+referer)
       if (ips[i] === referer) {
         res.json("letsgo")
         return
@@ -125,11 +123,14 @@ app.get('/authentication',function(req,res){
 });
 
 app.post('/authentication',jsonParser, function(req,res){
-  console.log(req.headers)
+  //console.log(req.headers)
   let ret = "unauthenticated"
   let val = store.get("authenticated")
   let ips = []
   if (val === null || val === "" || val === undefined) {
+
+
+
     ips = []
     store.set("authenticated", JSON.stringify(ips))
   } else {
@@ -154,7 +155,7 @@ app.post('/authentication',jsonParser, function(req,res){
     console.log("storing "+JSON.stringify(ips))
     store.set("authenticated", JSON.stringify(ips))
   }
-  console.log("ret "+ret)
+  //console.log("ret "+ret)
   res.json(ret)
 });
 
